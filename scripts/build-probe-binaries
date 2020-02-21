@@ -8,9 +8,13 @@ NEW_BUILDER=$(dirname $BASEDIR)/probe-builder/build-probe-binaries
 
 echo "Using $0 is deprecated, please switch to $NEW_BUILDER soon" >&2
 
+set -e
+
 if [ $# -ge 4 ]; then
+	echo "Running $NEW_BUILDER -p $1 -v $2 -k $4 -a $6 -A $5"
 	$NEW_BUILDER -p $1 -v $2 -k $4 -a "$6" -A "$5"
 else
+	echo "Running $NEW_BUILDER -p $1 -v $2"
 	$NEW_BUILDER -p $1 -v $2
 fi
 
